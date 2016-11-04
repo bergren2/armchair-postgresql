@@ -1,0 +1,9 @@
+{
+  "dbName": "armchair",
+  "dbManager": {
+    "user": "postgres",
+    "host": "localhost",
+    "port": "5432",
+    "dialect": "postgres"
+  }
+}

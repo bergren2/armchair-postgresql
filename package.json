@@ -2,5 +2,8 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "manage-database": "^0.2.1"
+  },
+  "scripts": {
+    "setup": "node setup.js"
   }
 }

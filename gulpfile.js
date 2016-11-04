@@ -1,19 +1,19 @@
 var gulp = require("gulp");
 var createDbManager = require("manage-database");
+var config = require("./config.json");
 
-var DB_NAME = "armchair";
 var dbManager = createDbManager({
-  user: "postgres",
-  host: "localhost",
-  port: "5432",
-  dialect: "postgres"
+  user: config.dbManager.user,
+  host: config.dbManager.host,
+  port: config.dbManager.port,
+  dialect: config.dbManager.dialect
 });
 
 // tasks
 gulp.task("default", ["import-data"]);
 
 gulp.task("import-data", ["drop-db"], function () {
-  return dbManager.createAsync(DB_NAME).then(function (err) {
+  return dbManager.createAsync(config.dbName).then(function (err) {
       console.log("database created");
   })
   .catch(function(err) {
@@ -22,7 +22,7 @@ gulp.task("import-data", ["drop-db"], function () {
 });
 
 gulp.task("drop-db", function () {
-  return dbManager.dropAsync(DB_NAME).then(function (err) {
+  return dbManager.dropAsync(config.dbName).then(function (err) {
       console.log("database dropped");
   })
   .catch(function(err) {
